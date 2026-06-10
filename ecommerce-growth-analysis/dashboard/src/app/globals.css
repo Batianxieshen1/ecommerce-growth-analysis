@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  /* 高级感配色：暖灰 + 奶油白 + 焦棕 */
+  --bg-primary: #faf9f7;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f5f3f0;
+  --bg-sidebar-hover: #eae7e2;
+  --bg-sidebar-active: #e8e4de;
+
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b6560;
+  --text-tertiary: #a09890;
+  --text-sidebar: #8a8278;
+  --text-sidebar-active: #1a1a1a;
+
+  --border: #e8e4de;
+  --border-light: #f0ece6;
+
+  --accent: #8b6f47;
+  --accent-hover: #6d5535;
+  --accent-light: #f5f0e8;
+
+  --warm: #c4a87c;
+  --warm-light: #faf6ef;
+
+  --success: #5a7a5a;
+  --success-light: #f0f5f0;
+  --warning: #b8860b;
+  --warning-light: #fdf8ed;
+  --danger: #9a3c3c;
+  --danger-light: #faf0f0;
+
+  --shadow-sm: 0 1px 3px rgba(26,26,26,0.04);
+  --shadow-md: 0 4px 20px rgba(26,26,26,0.06);
+  --shadow-lg: 0 8px 30px rgba(26,26,26,0.08);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Georgia', 'Noto Serif SC', 'Source Han Serif SC', 'STSong', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d5cfc7; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #b8b0a5; }
+
+/* 选中文本 */
+::selection { background: #f0e8d8; color: #4a3a2a; }
+
+/* 卡片 */
+.card-hover {
+  transition: box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+}
+.card-hover:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* 数字等宽 */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* 衬线标题 */
+.serif {
+  font-family: 'Georgia', 'Noto Serif SC', 'STSong', serif;
+}
+
+/* 无衬线正文 */
+.sans {
+  font-family: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* 细分割线 */
+.divider {
+  height: 1px;
+  background: var(--border);
+}
+
+/* 装饰线 */
+.decor-line {
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}

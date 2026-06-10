@@ -1,0 +1,107 @@
+{
+  "_comment": "新数据集适配模板 — 复制此文件，修改为你的数据集配置",
+
+  "project": {
+    "name": "你的项目名称",
+    "data_source": "数据集来源",
+    "time_range": "YYYY.MM — YYYY.MM",
+    "currency": "¥",
+    "language": "zh-CN"
+  },
+
+  "tables": {
+    "orders": {
+      "file": "你的订单表.csv",
+      "columns": {
+        "order_id": "你的订单ID列名",
+        "customer_id": "你的客户ID列名",
+        "status": "你的订单状态列名",
+        "purchase_time": "你的下单时间列名",
+        "approve_time": "你的支付时间列名",
+        "ship_time": "你的发货时间列名",
+        "deliver_time": "你的送达时间列名",
+        "estimate_time": "你的预计送达时间列名"
+      },
+      "valid_statuses": ["已完成", "已发货"],
+      "time_column": "purchase_time"
+    },
+    "customers": {
+      "file": "你的客户表.csv",
+      "columns": {
+        "customer_id": "你的客户ID列名",
+        "unique_id": "你的客户唯一ID列名",
+        "city": "你的城市列名",
+        "state": "你的省份/州列名"
+      }
+    },
+    "order_items": {
+      "file": "你的订单明细表.csv",
+      "columns": {
+        "order_id": "你的订单ID列名",
+        "item_id": "你的明细ID列名",
+        "product_id": "你的商品ID列名",
+        "seller_id": "你的卖家ID列名",
+        "price": "你的单价列名",
+        "freight": "你的运费列名"
+      }
+    },
+    "payments": {
+      "file": "你的支付表.csv",
+      "columns": {
+        "order_id": "你的订单ID列名",
+        "type": "你的支付方式列名",
+        "installments": "你的分期列名",
+        "value": "你的支付金额列名"
+      },
+      "aggregation": "sum",
+      "value_column": "value"
+    },
+    "products": {
+      "file": "你的商品表.csv",
+      "columns": {
+        "product_id": "你的商品ID列名",
+        "category": "你的品类列名"
+      }
+    }
+  },
+
+  "customer_key": "unique_id",
+  "order_key": "order_id",
+  "product_key": "product_id",
+
+  "metrics": {
+    "gmv_column": "gmv",
+    "price_column": "price",
+    "region_column": "state",
+    "category_column": "category",
+    "time_column": "purchase_time",
+    "time_granularity": "month"
+  },
+
+  "simulation": {
+    "visit_to_view": 0.60,
+    "view_to_cart": 0.15,
+    "cart_to_order": 0.40,
+    "order_to_pay": 0.95,
+    "mobile_ratio": 0.62,
+    "source_weights": {
+      "organic": 0.45,
+      "paid": 0.25,
+      "social": 0.18,
+      "direct": 0.12
+    }
+  },
+
+  "rfm": {
+    "percentiles": [0.33, 0.67]
+  },
+
+  "display": {
+    "category_map": {
+      "将你的品类英文名": "映射为中文显示名"
+    },
+    "top_n_categories": 10,
+    "top_n_regions": 10,
+    "retention_cohorts": 6
+  }
+}

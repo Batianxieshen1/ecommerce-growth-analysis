@@ -1,0 +1,132 @@
+{
+  "_comment": "电商增长分析配置文件 — 修改此文件即可适配不同数据集",
+
+  "project": {
+    "name": "电商用户增长分析",
+    "data_source": "Olist Brazilian E-Commerce",
+    "time_range": "2016.09 — 2018.10",
+    "currency": "R$",
+    "language": "zh-CN"
+  },
+
+  "tables": {
+    "orders": {
+      "file": "olist_orders_dataset.csv",
+      "columns": {
+        "order_id": "order_id",
+        "customer_id": "customer_id",
+        "status": "order_status",
+        "purchase_time": "order_purchase_timestamp",
+        "approve_time": "order_approved_at",
+        "ship_time": "order_delivered_carrier_date",
+        "deliver_time": "order_delivered_customer_date",
+        "estimate_time": "order_estimated_delivery_date"
+      },
+      "valid_statuses": ["delivered", "shipped", "invoiced", "processing"],
+      "time_column": "order_purchase_timestamp"
+    },
+    "customers": {
+      "file": "olist_customers_dataset.csv",
+      "columns": {
+        "customer_id": "customer_id",
+        "unique_id": "customer_unique_id",
+        "city": "customer_city",
+        "state": "customer_state"
+      }
+    },
+    "order_items": {
+      "file": "olist_order_items_dataset.csv",
+      "columns": {
+        "order_id": "order_id",
+        "item_id": "order_item_id",
+        "product_id": "product_id",
+        "seller_id": "seller_id",
+        "price": "price",
+        "freight": "freight_value"
+      }
+    },
+    "payments": {
+      "file": "olist_order_payments_dataset.csv",
+      "columns": {
+        "order_id": "order_id",
+        "type": "payment_type",
+        "installments": "payment_installments",
+        "value": "payment_value"
+      },
+      "aggregation": "sum",
+      "value_column": "payment_value"
+    },
+    "products": {
+      "file": "olist_products_dataset.csv",
+      "columns": {
+        "product_id": "product_id",
+        "category": "product_category_name"
+      }
+    },
+    "category_translation": {
+      "file": "product_category_name_translation.csv",
+      "columns": {
+        "category_local": "product_category_name",
+        "category_en": "product_category_name_english"
+      },
+      "optional": true
+    }
+  },
+
+  "customer_key": "unique_id",
+  "order_key": "order_id",
+  "product_key": "product_id",
+
+  "metrics": {
+    "gmv_column": "value",
+    "price_column": "price",
+    "region_column": "customer_state",
+    "category_column": "product_category_name_english",
+    "time_column": "purchase_time",
+    "time_granularity": "month"
+  },
+
+  "simulation": {
+    "_comment": "模拟行为日志的转化率参数，根据行业调整",
+    "visit_to_view": 0.60,
+    "view_to_cart": 0.15,
+    "cart_to_order": 0.40,
+    "order_to_pay": 0.95,
+    "mobile_ratio": 0.62,
+    "source_weights": {
+      "organic": 0.45,
+      "paid": 0.25,
+      "social": 0.18,
+      "direct": 0.12
+    }
+  },
+
+  "rfm": {
+    "percentiles": [0.33, 0.67],
+    "segment_rules": {
+      "高价值用户": "R==3 and (F>=2 or M>=2)",
+      "潜力用户": "R==3 and F==1 and M==1",
+      "一般用户": "R==2 and M>=2",
+      "沉睡用户": "R==2 and M==1",
+      "流失风险": "R==1"
+    }
+  },
+
+  "display": {
+    "category_map": {
+      "bed_bath_table": "床品/浴室/桌布",
+      "health_beauty": "健康/美容",
+      "sports_leisure": "运动/休闲",
+      "furniture_decor": "家具/装饰",
+      "computers_accessories": "电脑/配件",
+      "housewares": "家居用品",
+      "watches_gifts": "手表/礼品",
+      "telephony": "通讯设备",
+      "garden_tools": "园艺/工具",
+      "auto": "汽配用品"
+    },
+    "top_n_categories": 10,
+    "top_n_regions": 10,
+    "retention_cohorts": 6
+  }
+}
