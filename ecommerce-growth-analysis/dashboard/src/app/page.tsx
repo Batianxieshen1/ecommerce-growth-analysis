@@ -138,7 +138,7 @@ export default function Home() {
       </div>
 
       {/* KPI 卡片 */}
-      <div className="grid grid-cols-6 gap-4 mb-8">
+      <div className="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-3 lg:grid-cols-6">
         <KPICard title="累计 GMV" value={kpiData.totalGMV} />
         <KPICard title="总订单量" value={kpiData.totalOrders} />
         <KPICard title="平均客单价" value={kpiData.avgOrderValue} />
@@ -148,7 +148,7 @@ export default function Home() {
       </div>
 
       {/* 图表 */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
         <ChartCard title="月度 GMV 趋势" subtitle="单位：巴西雷亚尔 (R$)">
           <ReactECharts option={gmvOption} style={{ height: 260 }} />
         </ChartCard>
@@ -157,7 +157,7 @@ export default function Home() {
         </ChartCard>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <ChartCard title="品类 GMV 排名" subtitle="Top 10 品类">
           <ReactECharts option={categoryOption} style={{ height: 300 }} />
         </ChartCard>

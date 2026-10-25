@@ -145,9 +145,9 @@ export default function UploadPage() {
       </div>
 
       {/* 进度条 */}
-      <div className="flex items-center gap-3 mb-8">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-8">
         {['上传数据', '分配表角色', '映射列名', '分析结果'].map((label, i) => (
-          <div key={label} className="flex items-center gap-3">
+          <div key={label} className="flex items-center gap-2">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-medium"
                    style={{
@@ -158,7 +158,7 @@ export default function UploadPage() {
               </div>
               <span className="text-[11px] sans" style={{ color: step === i + 1 ? 'var(--text-primary)' : 'var(--text-tertiary)' }}>{label}</span>
             </div>
-            {i < 3 && <div className="w-8 h-px" style={{ background: step > i + 1 ? 'var(--accent)' : 'var(--border)' }}></div>}
+            {i < 3 && <div className="hidden h-px w-8 sm:block" style={{ background: step > i + 1 ? 'var(--accent)' : 'var(--border)' }}></div>}
           </div>
         ))}
       </div>
@@ -231,7 +231,7 @@ export default function UploadPage() {
 
       {/* Step 3: 列名映射 */}
       {step === 3 && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="bg-[var(--bg-card)] rounded-2xl p-6 card-hover">
             <h3 className="text-[14px] font-medium serif mb-1" style={{ color: 'var(--text-primary)' }}>项目信息</h3>
             <div className="decor-line mt-2 mb-4"></div>
@@ -307,7 +307,7 @@ export default function UploadPage() {
 
           {/* KPI 预览 */}
           {result.kpi && (
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {Object.entries(result.kpi).map(([key, value]) => (
                 <div key={key} className="bg-[var(--bg-card)] rounded-2xl p-5 card-hover">
                   <p className="text-[10px] uppercase tracking-wider sans" style={{ color: 'var(--text-tertiary)' }}>{key}</p>

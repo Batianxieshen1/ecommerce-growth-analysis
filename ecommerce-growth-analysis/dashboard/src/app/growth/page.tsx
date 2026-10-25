@@ -92,7 +92,7 @@ export default function GrowthPage() {
         <p className="text-[11px] mt-3 sans" style={{ color: 'var(--text-tertiary)' }}>漏斗转化 · 用户留存 · 地区分布 · 支付转化</p>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
         <ChartCard title="转化漏斗" subtitle="访问 → 浏览 → 加购 → 下单 → 支付（模拟数据）">
           <ReactECharts option={funnelOption} style={{ height: 320 }} />
         </ChartCard>
@@ -101,7 +101,7 @@ export default function GrowthPage() {
         </ChartCard>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <ChartCard title="地区 GMV 分布" subtitle="按州统计的销售额">
           <ReactECharts option={regionOption} style={{ height: 280 }} />
         </ChartCard>
@@ -113,7 +113,7 @@ export default function GrowthPage() {
       {/* 诊断摘要 */}
       <div className="mt-4 bg-[var(--bg-card)] rounded-2xl p-6 card-hover">
         <h3 className="text-[13px] font-medium serif mb-5" style={{ color: 'var(--text-primary)' }}>增长诊断摘要</h3>
-        <div className="grid grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-8">
           {[
             { title: '漏斗瓶颈', text: '浏览→加购转化率仅 3.0%，是最大流失点。建议优化商品详情页信任元素、简化加购流程。' },
             { title: '留存表现', text: 'Olist 复购率低（多数客户仅下单一次），次月留存约 10.9%。新客召回策略需要加强。' },

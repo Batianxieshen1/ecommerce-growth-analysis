@@ -85,7 +85,7 @@ export default function SegmentsPage() {
       </div>
 
       {/* 分层概览 */}
-      <div className="grid grid-cols-5 gap-3 mb-8">
+      <div className="grid grid-cols-2 gap-3 mb-8 sm:grid-cols-3 md:grid-cols-5">
         {rfmSegments.map((seg, i) => {
           const style = getStyle(seg.segment);
           return (
@@ -101,7 +101,7 @@ export default function SegmentsPage() {
       </div>
 
       {/* 图表 */}
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
         <ChartCard title="用户分层占比" subtitle="RFM 评分聚合">
           <ReactECharts option={pieOption} style={{ height: 300 }} />
         </ChartCard>
@@ -115,8 +115,8 @@ export default function SegmentsPage() {
           <ReactECharts option={monetaryOption} style={{ height: 260 }} />
         </ChartCard>
         <ChartCard title="分层详细数据">
-          <div className="overflow-hidden">
-            <table className="w-full text-[12px] sans">
+          <div className="-mx-2 overflow-x-auto px-2">
+            <table className="w-full min-w-[380px] whitespace-nowrap text-[12px] sans">
               <thead>
                 <tr style={{ borderBottom: '1px solid var(--border)' }}>
                   <th className="text-left py-2.5 font-medium uppercase tracking-wider text-[10px]" style={{ color: 'var(--text-tertiary)' }}>分层</th>
@@ -148,7 +148,7 @@ export default function SegmentsPage() {
       {/* 运营策略 */}
       <div className="bg-[var(--bg-card)] rounded-2xl p-6 card-hover">
         <h3 className="text-[13px] font-medium serif mb-5" style={{ color: 'var(--text-primary)' }}>分层运营策略</h3>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
           <div className="space-y-5">
             {[
               { seg: '高价值用户', text: '会员专属权益、新品优先体验、专属客服通道、复购周期提醒推送。' },
